@@ -1,0 +1,24 @@
+name: Auto Pull Request from feature/* to develop
+
+on:
+  push:
+    branches:
+      - "feature/*"
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: develop
+          head: ${{ github.ref_name }}
+          title: "Auto-generated Pull Request from ${{ github.ref_name }}"
+          body: "This pull request was automatically generated from the branch ${{ github.ref_name }}."
+          draft: false
