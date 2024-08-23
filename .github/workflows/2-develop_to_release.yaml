@@ -17,11 +17,11 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: release.${{ env.VERSION }}
+          branch: release
           base: develop
           title: "Automated Pull Request from ${{ github.ref }}"
           body: |
-            This is an automated pull request to merge changes from $develop to release.${{ env.VERSION }}.
+            This is an automated pull request to merge changes from develop to release.
               reviewers: octocat
               milestone: 1
               draft: false
