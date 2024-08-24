@@ -6,13 +6,13 @@ on:
     branches:
       - develop
 
-  jobs:
-    create-pull-request:
+jobs:
+  create-pull-request:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-      uses: actions/checkout@v2
+        uses: actions/checkout@v2
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
@@ -23,6 +23,6 @@ on:
           title: "Automated Pull Request from ${{ github.ref }}"
           body: |
             This is an automated pull request to merge changes from develop to release.
-              reviewers: octocat
-              milestone: 1
-              draft: false
+            reviewers: octocat
+            milestone: 1
+            draft: false
