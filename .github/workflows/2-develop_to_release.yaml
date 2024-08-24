@@ -2,16 +2,17 @@ name: Create Pull Request from Develop to Release
 
 on:
   pull_request:
+    types: [closed]
     branches:
-      - "develop"
+      - develop
 
-jobs:
-  create-pull-request:
+  jobs:
+    create-pull-request:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+      uses: actions/checkout@v2
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
